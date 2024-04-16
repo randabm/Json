@@ -1,0 +1,19 @@
+{
+    "clientes": [
+        {
+            "nombre":"Randa", 
+            "Edad": 21,
+            "ciudad":"Villarrobledo"
+        },
+        {
+            "nombre":"Ste", 
+            "Edad": 20,
+            "ciudad":"Mk"
+        },
+        {
+            "nombre":"Miriam", 
+            "Edad": 8,
+            "ciudad":"Villarrobledo"
+        }
+    ]
+}
