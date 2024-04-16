@@ -1,0 +1,19 @@
+{
+    "lista_facturas":
+    [{
+        "datos_clientes": {
+            "nombre": "Randa",
+            "apellido1": "Bougar",
+            "apellido2": "Mizaoui",
+            "dni":"93939393A", 
+            "telefonos":["123556789", "12315654"]
+        },
+            "datos_ticket":{
+            }
+                "alquileres":{},
+                "compras":{},
+                "forma pago": "Contado",
+                "importe_total": 56.80,
+            }        
+        }, {}]
+}

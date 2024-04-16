@@ -1,0 +1,8 @@
+{
+    "nombre": "Juan",
+    "apellidos": "Martinez",
+    "edad": 25,
+    "usuario": "juan34",
+    "email": "juan@gmail.com",
+    "aficiones": ["ajedres", "futbol", "tenis"]
+}

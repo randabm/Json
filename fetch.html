@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="boton">Carga Empleado</button>
+
+    <ol id="lista"></ol>
+
+    <script>
+        document.getElementById("Boton").onclick=cargaEmpleado;
+        function cargaEmpleado(){
+
+            fetch('datos.json')
+            .then(function(response) {
+                if (!response.ok) {
+                throw new Error('No se pudo cargar el archivo JSON.');
+                }
+                return response.json(); // Convertimos la respuesta a JSON
+            })
+            .then(function(data) {
+                // La variable "data" ahora contiene el objeto JavaScript
+                //console.log(data);
+
+                // Puedes acceder a las propiedades del objeto, por ejemplo:
+
+                let milista=document.getElementById("lista");
+                let li=document.createElement("li");
+                li.innerHTML= data.nombre;
+                milista.appendChild(li);
+
+                let li2=document.createElement("li");
+                li2.innerHTML= data.edad;
+                milista.appendChild(li2);
+
+                let li3=document.createElement("li");
+                li3.innerHTML= data.ciudad;
+                milista.appendChild(li3);
+
+                alert("Nombre:"+ data.nombre);
+                alert("Edad:"+ data.edad);
+                alert("Ciudad:"+ data.ciudad);
+
+                // Aqu铆 puedes realizar cualquier operaci贸n que necesites con los datos del archivo JSON
+            })
+            .catch(function(error) {
+                console.error('Se produjo un error al cargar el archivo JSON:', error);
+            });
+        }
+
+ </script>
+</body>
+</html>
