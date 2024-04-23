@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, td, th, tr {
+            border: 2px solid blue;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <button id="cargaMuebles">Carga muebles</button>
+    <div id="contenedorTabla"></div>
+
+    <script>
+        document.getElementById("cargaMuebles").addEventListener("click", cargaMuebles);
+
+        function cargaMuebles() {
+            fetch('./lista_muebles.json')
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('No se pudo cargar el archivo JSON.');
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                const tabla = document.createElement("table");
+
+                const filaSup = document.createElement("tr");
+                const encabezados = ["Nombre", "Tipo", "Color", "Material", "Precio"];
+
+                encabezados.forEach((encabezado) => {
+                    const celdaEncabezado = document.createElement("th");
+                    celdaEncabezado.innerHTML = encabezado;
+                    filaSup.appendChild(celdaEncabezado);
+                });
+
+                tabla.appendChild(filaSup);
+
+                data.muebles.forEach((mueble) => {
+                    const fila = document.createElement("tr");
+
+                    const celdas = [mueble.nombre, mueble.tipo, mueble.color, mueble.material, mueble.precio];
+
+                    celdas.forEach((valor) => {
+                        const celda = document.createElement("td");
+                        celda.innerHTML = valor;
+                        fila.appendChild(celda);
+                    });
+
+                    tabla.appendChild(fila);
+                });
+
+                const contenedorTabla = document.getElementById("contenedorTabla");
+                contenedorTabla.innerHTML = "";
+                contenedorTabla.appendChild(tabla);
+            })
+            .catch(function(error) {
+                console.error('Se produjo un error al cargar el archivo JSON:', error);
+            });
+        }
+    </script>
+</body>
+</html>
