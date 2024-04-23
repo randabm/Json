@@ -1,0 +1,16 @@
+{
+    "lista_regiones":[
+        { 
+            "nombre": "CLM",
+            "archivo": "clm.json"
+        },         
+        { 
+            "nombre": "Valencia",
+            "archivo": "valencia.json"
+        }, 
+        {
+            "nombre": "Andalucia",
+            "archivo": "andalucia.json"
+        }       
+    ]
+}
