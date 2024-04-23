@@ -1,0 +1,62 @@
+{
+    "muebles": [
+      {
+        "nombre": "Sofá de cuero",
+        "tipo": "Sofá",
+        "color": "Marrón",
+        "material": "Cuero",
+        "precio": 1258.99,
+        "valoraciones": [
+          {
+            "cliente": "Randa",
+            "puntuacion": 4,
+            "comentario": "Muy cómodo y bonito"
+          },
+          {
+            "cliente": "Ste",
+            "puntuacion": 5,
+            "comentario": "Excelente calidad y diseño"
+          }
+        ]
+      },
+      {
+        "nombre": "Brasero",
+        "tipo": "Mesa",
+        "color": "Beaige",
+        "material": "Madera",
+        "precio": 178.99,
+        "valoraciones": [
+          {
+            "cliente": "Lora",
+            "puntuacion": 4,
+            "comentario": "es muy buena para estar calientes"
+          },
+          {
+            "cliente": "Elena",
+            "puntuacion": 5,
+            "comentario": " Estoy encantada con este brasero"
+          }
+        ]
+      },
+      {
+        "nombre": "Armario",
+        "tipo": "Armario",
+        "color": "Natural",
+        "material": "Roble macizo",
+        "precio": 789.99,
+        "valoraciones": [
+          {
+            "cliente": "Paola",
+            "puntuacion": 5,
+            "comentario": "Espacioso y bien construido."
+          },
+          {
+            "cliente": "Kelly",
+            "puntuacion": 4,
+            "comentario": "Las puertas se cierran suavemente estan bien amueboladas"
+          }
+        ]
+      }
+    ]
+  }
+  
