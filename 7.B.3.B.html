@@ -24,7 +24,7 @@
                 if (!response.ok) {
                     throw new Error('No se puede cargar el archivo JSON');
                 }
-                return response.json(); // Convertimos la respuesta a JSON
+                return response.json(); 
             })
             .then(function(data) {
                 if (sig < data.muebles.length){
