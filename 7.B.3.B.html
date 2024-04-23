@@ -58,14 +58,13 @@
 
                     if (sig == data.muebles.length){
                         document.getElementById("btnCargaSiguiente").style.visibility = "hidden";
-                        
+                        display.innerHTML += "No hay mas muebles que mostrar";
                     }  
-                    display.innerHTML += "No hay mas muebles que mostrar";
                 }
             })
             .catch(function(error) {
                 console.error('Se ha producido un error al cargar el archivo JSON:', error);
-            }); 
+            });  
         }
     </script>
 </body>
