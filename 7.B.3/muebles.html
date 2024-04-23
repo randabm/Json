@@ -20,9 +20,7 @@
                     let lista_muebles = JSON.parse(xhttp.responseText);
                     
                     for (i=0; i < lista_muebles.muebles.length; i++){
-                        document.getElementById("display").innerHTML += "<br>" + "******** " + "<br>";
                         document.getElementById("display").innerHTML += " MUEBLE " + (i+1) + "<br>";    
-                        document.getElementById("display").innerHTML += "******** " + "<br>";
 
                         document.getElementById("display").innerHTML += "Nombre:  " + lista_muebles.muebles[i].nombre + "<br>";
                         document.getElementById("display").innerHTML += "Tipo:  " + lista_muebles.muebles[i].tipo + "<br>";
