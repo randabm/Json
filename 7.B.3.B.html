@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button id="btnCargaMueble">Carga mueble</button> <br>
+    <button id="btnCargaSiguiente">Carga Siguiente</button> <br>
+    <div id="display" style="border: 2px solid blue"></div>
+
+    <script>
+        let sig = 0;
+        document.getElementById("btnCargaSiguiente").style.visibility = "hidden";
+
+        document.getElementById("btnCargaMueble").onclick = cargaMueble;
+        document.getElementById("btnCargaSiguiente").onclick = cargaMueble;
+
+        function cargaMueble(){
+            fetch('lista_muebles.json')
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('No se puede cargar el archivo JSON');
+                }
+                return response.json(); // Convertimos la respuesta a JSON
+            })
+            .then(function(data) {
+                if (sig < data.muebles.length){
+                    let display = document.getElementById("display");
+                    display.innerHTML = " ";
+
+                    let mueble = data.muebles[sig];
+                    display.innerHTML += " MUEBLE " + (sig+1) + "<br>";    
+
+                    display.innerHTML += "Nombre:  " + mueble.nombre + "<br>";
+                    display.innerHTML += "Tipo:  " + mueble.tipo + "<br>";
+                    display.innerHTML += "Color:  " + mueble.color + "<br>";
+                    display.innerHTML += "Material:  " + mueble.material + "<br>";
+                    display.innerHTML += "Precio:  $" + mueble.precio.toFixed(2) + "<br>";
+                    display.innerHTML += "Valoraciones:  " + "<br>";
+
+                    let valoracionesList = document.createElement("ul");
+                    mueble.valoraciones.forEach(function(valoracion) {
+                        let valoracionItem = document.createElement("li");
+                        valoracionItem.innerHTML = "Cliente: " + valoracion.cliente + "<br>" +
+                                                   "Puntuación: " + valoracion.puntuacion + "<br>" +
+                                                   "Comentario: " + valoracion.comentario + "<br>";
+                        valoracionesList.appendChild(valoracionItem);
+                    });
+                    display.appendChild(valoracionesList);
+
+                    sig++;
+
+                    document.getElementById("btnCargaMueble").style.visibility = "hidden";
+                    document.getElementById("btnCargaSiguiente").style.visibility = "visible";
+
+                    if (sig == data.muebles.length){
+                        document.getElementById("btnCargaSiguiente").style.visibility = "hidden";
+                        display.innerHTML += "No hay mas muebles que mostrar";
+                    }  
+                }
+            })
+            .catch(function(error) {
+                console.error('Se produjo un error al cargar el archivo JSON:', error);
+            }); 
+        }
+    </script>
+</body>
+</html>
