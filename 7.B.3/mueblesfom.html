@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btnCargaSiguiente {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    
+    Mueble: <input type="text" id="mueble"> <br>
+    Nombre: <input type="text" id="nombre"> <br>
+    Tipo: <input type="text" id="tipo"> <br>
+    Color: <input type="text" id="color"> <br>
+    Material: <input type="text" id="material"> <br>
+    Precio: <input type="text" id="precio"> <br>
+    Valoraciones: <div id="valoraciones" style="border: 1px solid black"></div>
+
+    <button id="btnCargaMueble">Carga mueble</button> <br>
+    <button id="btnCargaSiguiente">Siguiente Mueble</button>
+        
+    <script>
+        let sig = 0;
+        document.getElementById("btnCargaMueble").onclick = cargaMueble;
+        document.getElementById("btnCargaSiguiente").onclick = cargaMueble;
+
+        function cargaMueble(){     
+            /************* SOLICITUD DE ARCHIVO JSON****************/
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                 // Typical action to be performed when the document is ready:
+                    let lista_muebles = JSON.parse(xhttp.responseText);
+                    
+                    if (sig < lista_muebles.muebles.length){
+                        document.getElementById("mueble").value = " MUEBLE " + (sig+1);    
+                        document.getElementById("nombre").value = lista_muebles.muebles[sig].nombre;
+                        document.getElementById("tipo").value = lista_muebles.muebles[sig].tipo;
+                        document.getElementById("color").value = lista_muebles.muebles[sig].color;
+                        document.getElementById("material").value = lista_muebles.muebles[sig].material;
+                        document.getElementById("precio").value = lista_muebles.muebles[sig].precio;
+                        document.getElementById("valoraciones").innerHTML = " ";
+                        for (k=0; k < lista_muebles.muebles[sig].valoraciones.length; k++){
+                            document.getElementById("valoraciones").innerHTML += 
+                                "Cliente: " + lista_muebles.muebles[sig].valoraciones[k].cliente + "<br>" +
+                                "Puntuación: " + lista_muebles.muebles[sig].valoraciones[k].puntuacion + "<br>" +
+                                "Comentario: " + lista_muebles.muebles[sig].valoraciones[k].comentario + "<br><br>";
+                        }
+                        sig++;
+                        
+                        if (sig > 0){
+                            document.getElementById("btnCargaMueble").style.visibility = "hidden";
+                            document.getElementById("btnCargaSiguiente").style.visibility = "visible";
+                        }
+                        if (sig == lista_muebles.muebles.length){
+                            document.getElementById("btnCargaSiguiente").style.visibility = "hidden";
+
+                        }
+
+                    }
+                }
+            };
+
+            xhttp.open("GET", "lista_muebles.json", true);
+            xhttp.send();
+        }
+        
+    </script>
+
+</body>
+</html>

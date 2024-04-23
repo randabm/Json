@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="display" style="border: 2px solid blue"></div>
+        
+    <button id="btnCargaMuebles">Carga muebles</button>
+        
+    <script>
+        document.getElementById("btnCargaMuebles").onclick = cargaMuebles;  
+                  
+        function cargaMuebles(){     
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    let lista_muebles = JSON.parse(xhttp.responseText);
+                    
+                    for (i=0; i < lista_muebles.muebles.length; i++){
+                        document.getElementById("display").innerHTML += "<br>" + "******** " + "<br>";
+                        document.getElementById("display").innerHTML += " MUEBLE " + (i+1) + "<br>";    
+                        document.getElementById("display").innerHTML += "******** " + "<br>";
+
+                        document.getElementById("display").innerHTML += "Nombre:  " + lista_muebles.muebles[i].nombre + "<br>";
+                        document.getElementById("display").innerHTML += "Tipo:  " + lista_muebles.muebles[i].tipo + "<br>";
+                        document.getElementById("display").innerHTML += "Color:  " + lista_muebles.muebles[i].color + "<br>";
+                        document.getElementById("display").innerHTML += "Material:  " + lista_muebles.muebles[i].material + "<br>";
+                        document.getElementById("display").innerHTML += "Precio:  $" + lista_muebles.muebles[i].precio.toFixed(2) + "<br>";
+                        document.getElementById("display").innerHTML += "Valoraciones:  " + "<br>";
+                        for (k=0; k < lista_muebles.muebles[i].valoraciones.length; k++){
+                            document.getElementById("display").innerHTML += " - Cliente: " + lista_muebles.muebles[i].valoraciones[k].cliente + "<br>";
+                            document.getElementById("display").innerHTML += " - Puntuación: " + lista_muebles.muebles[i].valoraciones[k].puntuacion + "<br>";
+                            document.getElementById("display").innerHTML += " - Comentario: " + lista_muebles.muebles[i].valoraciones[k].comentario + "<br>";
+                        }
+
+                    }
+                }
+            };
+            xhttp.open("GET", "lista_muebles.json", true);
+            xhttp.send();
+        }
+        
+    </script>
+
+</body>
+</html>
