@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="cliente">Cliente:
+        <select onchange="cargaPedidos()" name="cliente" id="cliente"></select>
+
+        <table id="tablaPedidos">
+
+        </table>
+
+        <script>
+            function cargaPedidos() {
+                let selectCliente = document.getElementById("cliente");
+                let archivoALeer = selectCliente.value;
+
+                fetch(archivoALeer)
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('No se pudo cargar el archivo JSON.');
+                        }
+                        return response.json(); 
+                    })
+                    .then(function (data) {
+                      
+                        let tablaPedidos = document.getElementById("tabla_pedidos");
+
+                        for (let pedido of data.pedidos) {
+                            let nuevaFila = document.createElement("tr");
+                           
+                            let celdaCodigo = document.createElement("td");
+                            celdaCodigo.innerHTML = pedido.cod_articulo;
+                            let celdaDescripcion = document.createElement("td");
+                            celdaDescripcion.innerHTML = pedido.descripcion;
+                            let celdaPrecio = document.createElement("td");
+                            celdaPrecio.innerHTML = pedido.precio;
+                            nuevaFila.appendChild(celdaCodigo);
+                            nuevaFila.appendChild(celdaDescripcion);
+                            nuevaFila.appendChild(celdaPrecio);
+                            document.getElementById("tabla_pedidos").appendChild(nuevaFila);
+                        }
+                    })
+                    .catch(function (error) {
+                        console.error('Se produjo un error al cargar el archivo JSON:', error);
+                    });
+            }
+
+            fetch('./lista-cliente.json')
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error('No se pudo cargar el archivo JSON.');
+                    }
+                    return response.json(); 
+                })
+                .then(function (data) {
+                    
+
+
+                    let selectCliente = document.getElementById("cliente");
+                    for (let cliente of data.lista-cliente) {
+                        let nuevaOpcion = document.createElement("option");
+                        nuevaOpcion.innerHTML = cliente.nombre;
+                        nuevaOpcion.value = cliente.id + ".json";
+                        selectCliente.appendChild(nuevaOpcion);
+                    }
+                })
+                .catch(function (error) {
+                    console.error('Se produjo un error al cargar el archivo JSON:', error);
+                });
+
+
+        </script>
+    </label>
+</body>
+
+</html>

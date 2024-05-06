@@ -1,0 +1,14 @@
+{
+    "pedidos": [
+        {
+            "cod_articulo": "A345",
+            "descripcion": "Cámara digital Canon DX-98",
+            "precio": 676
+        },
+        {
+            "cod_articulo": "B344",
+            "descripcion": "Ordenador HP 96",
+            "precio": 800
+        }
+    ]
+}

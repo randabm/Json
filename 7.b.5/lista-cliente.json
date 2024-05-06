@@ -1,0 +1,8 @@
+
+{
+    "lista_clientes":[
+        {"id":1,"nombre":"Juan Martinez López"},
+        {"id":2,"nombre":"María García Burillo"},
+        {"id":3,"nombre":"José Pérez Cruz"}
+    ]
+} 

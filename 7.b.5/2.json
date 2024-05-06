@@ -1,0 +1,14 @@
+{
+    "pedidos": [
+        {
+            "cod_articulo": "SW23",
+            "descripcion": "Ordenaror PC 23",
+            "precio": 780
+        },
+        {
+            "cod_articulo": "52DC",
+            "descripcion": "Portatil Mac",
+            "precio": 1900
+        }
+    ]
+}

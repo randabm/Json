@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos de Clientes</title>
+</head>
+<body>
+    <h1>Pedidos de Clientes</h1>
+    <label for="clientes">Selecciona un cliente:</label>
+    <select id="clientes" onchange="mostrarPedidos()">
+        <option value="1">Juan Martinez López</option>
+        <option value="2">María García Burillo</option>
+        <option value="3">José Pérez Cruz</option>
+    </select>
+    <table id="tablaPedidos">
+    </table>
+
+    <script>
+        function mostrarPedidos() {
+            let clienteId = document.getElementById("clientes").value;
+            let tablaPedidos = document.getElementById("tablaPedidos");
+            tablaPedidos.innerHTML = ""; 
+
+            let datosPedidos = {
+                1: [
+                    {
+                        "cod_articulo": "A345",
+                        "descripcion": "Cámara digital Canon DX-98",
+                        "precio": 676
+                    },
+                    {
+                        "cod_articulo": "B344",
+                        "descripcion": "Ordenador HP 96",
+                        "precio": 800
+                    }
+                ],
+                2: [
+                    {
+                        "cod_articulo": "SW23",
+                        "descripcion": "Ordenador PC 23",
+                        "precio": 780
+                    },
+                    {
+                        "cod_articulo": "52DC",
+                        "descripcion": "Portátil Mac",
+                        "precio": 1900
+                    }
+                ],
+                3: [
+                    {
+                        "cod_articulo": "TS25",
+                        "descripcion": "Móvil iPhone 15",
+                        "precio": 1000
+                    },
+                    {
+                        "cod_articulo": "ZX65",
+                        "descripcion": "Samsung Galaxy A3",
+                        "precio": 850
+                    }
+                ]
+            };
+
+
+
+
+            let pedidosCliente = datosPedidos[clienteId];
+            for  ( let pedido of data.pedidos) {
+
+                let nuevaFila = document.createElement("tr");
+                let celdaCodigo = document.createElement("td");
+                celdaCodigo.innerHTML = pedido.cod_articulo;
+
+                celdaCodigo.textContent = ;
+
+
+
+
+                pedidosCliente.forEach(pedido => {
+                    let celdaDescripcion = document.createElement("td");
+                    let celdaPrecio = document.createElement("td");
+
+
+                    filaPedido.appendChild(celdaCodigo);
+                    filaPedido.appendChild(celdaDescripcion);
+                    filaPedido.appendChild(celdaPrecio);
+
+                    tablaPedidos.appendChild(filaPedido);
+                });
+            }
+        }
+    </script>
+</body>
+</html>

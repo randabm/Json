@@ -1,0 +1,14 @@
+{
+    "pedidos": [
+        {
+            "cod_articulo": "TS25",
+            "descripcion": "Movil Iphone 15",
+            "precio": 1000
+        },
+        {
+            "cod_articulo": "ZX65",
+            "descripcion": "Samsun Galaxy A3",
+            "precio": 850
+        }
+    ]
+}
